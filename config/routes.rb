@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   }
 
   #会員側ルーティング
+  get '/' => 'public/homes#top'
+  get '/about' => 'public/homes#about'
+  
 
 
   # 管理者側ルーティング
