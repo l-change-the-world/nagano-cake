@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
 
   # 管理者側ルーティング
-
+  namespace :admin do
+   resources :items, only: [:new, :create] 
+   resources :genres, only: [:new, :create, :index]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
