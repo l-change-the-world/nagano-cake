@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <h2 class="bg-light">会員一覧</h2>
+      <table>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+        <%# ここから繰り返し処理 %>
+        <% @members.each do |member| %>
+        <tr>
+          <td><%= member.id %></td>
+          <td><%= member.last_name %><%= member.last_name %></td>
+          <td><%= member.email %></td>
+          <td><%= member.order.status %></td>
+          <%# ページネーションの記述必要 %>
+        </tr>
+        <% end %>
+        <%# ここまで繰り返し処理%>
+      </table>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>
