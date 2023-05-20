@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   #会員側ルーティング
   get '/' => 'public/homes#top'
   get '/about' => 'public/homes#about'
-  
+
   scope module: :public do
     resources :items, only: [:index, :show]
     resources :shopping_cart_items, only: [:index, :create, :update, :destroy] do
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   # 管理者側ルーティング
   namespace :admin do
-   resources :items, only: [:new, :create] 
+   resources :items, only: [:new, :create, :show, :edit, :update]
    resources :genres, only: [:new, :create, :index, :edit, :update]
 
   get '/' => 'homes#top'
