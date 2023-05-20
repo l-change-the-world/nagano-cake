@@ -10,6 +10,23 @@ Rails.application.routes.draw do
   }
 
   #会員側ルーティング
+  get '/' => 'public/homes#top'
+  get '/about' => 'public/homes#about'
+  
+  scope module: :public do
+    resources :items, only: [:index, :show]
+    resources :shopping_cart_items, only: [:index, :create, :update, :destroy] do
+      collection do
+        get 'destroy_all'
+      end
+    end
+    resources :orders, only: [:new, :index, :show, :create] do
+      collection do
+        get 'confirm'
+        get 'complete'
+      end
+    end
+  end
 
 
   # 管理者側ルーティング
