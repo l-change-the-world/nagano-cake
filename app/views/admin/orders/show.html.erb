@@ -1,0 +1,58 @@
+<h2 class="bg-light">~さんの会員詳細</h2>
+<table>
+  <tr>
+    <th>氏名</th>
+    <td>会員の名前/link</td>
+  </tr>
+  <tr>
+    <th>注文日</th>
+    <td>注文日時</td>
+  </tr>
+  <tr>
+    <th>配送先</th>
+    <td>郵便番号・住所・名前</td>
+  </tr>
+  <tr>
+    <th>支払方法</th>
+    <td>銀行振込・クレジット</td>
+  </tr>
+  <tr>
+    <th>注文ステータス</th>
+    <td>入金待ちorその他</td>
+    <td><a>更新</a></td>
+  </tr>
+</table>
+
+<table>
+  <tr class="bg-light">
+    <th>商品名</th>
+    <th>単価(税込み)</th>
+    <th>数量</th>
+    <th>小計</th>
+    <th>制作ステータス</th>
+  </tr>
+  <%# ここから繰り返し処理 %>
+  <tr>
+    <td>item_id</td>
+    <td>member_id</td>
+    <td>quantity</td>
+    <td>production_status</td>
+    <td><a>更新</a></td>
+  </tr>
+  <%# ここまで繰り返し処理%>
+</table>
+
+<table>
+  <tr>
+    <th>商品合計</th>
+    <td>price_excluding_taxの商品分の足し算/円</td>
+  </tr>
+  <tr>
+    <th>送料</th>
+    <td>shipping_fee/円</td>
+  </tr>
+  <tr>
+    <th>請求金額合計</th>
+    <td>total_payment_amount/円</td>
+  </tr>
+</table>
