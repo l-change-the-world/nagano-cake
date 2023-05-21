@@ -21,6 +21,13 @@
     </div>
     <div class="col-lg-8">
       <h2>商品詳細</h2>
+      <%= image_tag @item.get_image, size: "250x200" %>
+      <h2><%= @item.name %></h2>
+      <p><%= @item.description %></p>
+      <p>¥<%= @item.add_tax_sales_price.to_s %>（税込）</p>
+      <span style="color: <%= @item.is_for_sale ? 'green' : 'red' %>">
+        <%= @item.is_for_sale ? '販売中' : '売切れ' %>
+      </span>
     </div>
   </div>
 </div>

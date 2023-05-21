@@ -21,6 +21,17 @@
     </div>
     <div class="col-lg-8">
       <h2>商品一覧</h2>
+      <span>(全<%= @items.count %>件）</span>
+      <% @items.each do |item| %>
+      <table>
+        <tr>
+          <%= image_tag item.get_image, size: "100x100" %>
+          <span><%= item.name %></span>
+          <span>¥<%= item.price_excluding_tax %></span>
+        </tr>
+      </table>
+      <% end %>
+      <%= paginate @items %>
     </div>
   </div>
 </div>

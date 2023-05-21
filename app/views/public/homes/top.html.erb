@@ -13,6 +13,16 @@
         </p>
       </div>
       <h2>新着商品</h2>
+      <% @items.each do |item| %>
+      <table>
+        <tr>
+          <%= image_tag item.get_image, size: "100x100" %><br>
+          <span><%= item.name %></span>
+          <span>¥<%= item.price_excluding_tax %></span>
+        </tr>
+      </table>
+      <% end %>
+      <%= link_to "全ての商品を見る＞", items_path %>
     </div>
   </div>
 </div>
