@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col-4"></div>
     <div class="col-6">
-      <%= form_with model: @user, url: admin_session_path do |f| %>
+      <%= form_with model: @admin, url: admin_session_path do |f| %>
         <div>
           <%= f.label :メールアドレス %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -21,6 +21,9 @@
         <%= f.submit "Log in" %>
       <% end %>
     </div>
+    <p>メールアドレスは「admin@co.jp」</p>
+    <p>パスワードは「naganocake」</p>
+    <%# この２つは実装前に絶対消すように！！%>
   </div>
   <%= render "admin/shared/links" %>
 </div>
