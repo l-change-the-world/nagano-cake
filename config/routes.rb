@@ -31,8 +31,8 @@ Rails.application.routes.draw do
 
   # 管理者側ルーティング
   namespace :admin do
-   resources :items, only: [:new, :create, :show, :edit, :update]
-   resources :genres, only: [:new, :create, :index, :edit, :update]
+   resources :items, only: [:new, :create, :show, :edit, :update, :index]
+   resources :genres, only: [:new, :create, :index, :edit, :update, :destroy]
 
   get '/' => 'homes#top'
    resources :members, only: [:index, :show, :edit, :update]
