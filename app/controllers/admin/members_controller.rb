@@ -1,7 +1,7 @@
 class Admin::MembersController < ApplicationController
-  
+  before_action :authenticate_admin!
   def index
-    @members = Menber.all
+    @members = Member.all
   end
   
   def show
@@ -13,4 +13,6 @@ class Admin::MembersController < ApplicationController
   def update
   end
   
+  private
+ 
 end
