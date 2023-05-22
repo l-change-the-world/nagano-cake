@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   #会員側ルーティング
   get '/' => 'public/homes#top'
   get '/about' => 'public/homes#about'
-  
+
   scope module: :public do
     get "/members/my_page" => "members#show"
     get "/members/information/edit" => "members#edit"
@@ -37,14 +37,13 @@ Rails.application.routes.draw do
 
   # 管理者側ルーティング
   namespace :admin do
-   resources :items, only: [:new, :create] 
+   resources :items, only: [:new, :create, :show, :edit, :update]
    resources :genres, only: [:new, :create, :index, :edit, :update]
 
   get '/' => 'homes#top'
    resources :members, only: [:index, :show, :edit, :update]
    resources :orders, only: [:show, :update]
    resources :order_items, only: [:update]
-
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
