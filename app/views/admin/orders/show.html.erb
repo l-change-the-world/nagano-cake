@@ -30,8 +30,8 @@
     <th>注文ステータス</th>
     <td>
       <%= form_with model: @order, url: admin_order_path(@order),local: true, class: "form-row" do |f| %>
-      <%= f.select :status, Order.status_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6" %>
-      <%= f.submit "更新" %>
+        <%= f.select :status, Order.statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6" %>
+        <%= f.submit "更新" %>
       <% end %>
     </td>
   </tr>
@@ -40,7 +40,7 @@
 <table class="bg-info">
   <tr>
     <th>商品名</th>
-    <th>単価(税込み)</th>
+    <th>単価(税込)</th>
     <th>数量</th>
     <th>小計</th>
     <th>制作ステータス</th>
@@ -49,11 +49,13 @@
   <% @order_items.each do |order_item| %>
     <tr>
       <td><%= order_item.item.name %></td>
-      <td><%= order_item.item.price_excluding_tax %></td>
+      <td><%= order_item.price %></td>
       <td><%= order_item.quantity %></td>
+      <%#= ここはcountメソッド？@books.book_comments.count %>
+      <td><%= order_item.subtotal %></td>
       <td>
-        <%= form_with model: order_item, url: admin_order_items_path(order_item),local: true, class: "form-row" do |f| %>
-          <%= f.select :order_status, OrderItem.status_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6" %>
+        <%= form_with model: order_item, url: admin_order_item_path(order_item),local: true, class: "form-row" do |f| %>
+          <%= f.select :production_status, OrderItem.production_statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6" %>
           <%= f.submit "更新" %>
         <% end %>
       </td>
@@ -65,11 +67,11 @@
 <table class="bg-light">
   <tr>
     <th>商品合計</th>
-    <td>price_excluding_taxの商品分の足し算/円</td>
+    <td></td>
   </tr>
   <tr>
     <th>送料</th>
-    <td>shipping_fee/円</td>
+    <td><%= @order.shipping_fee %>円</td>
   </tr>
   <tr>
     <th>請求金額合計</th>
