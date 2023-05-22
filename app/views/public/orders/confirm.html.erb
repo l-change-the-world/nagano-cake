@@ -1,1 +1,15 @@
-<h1>orders confirm</h1>
+<h2>注文情報確認</h2>
+<table>
+  <tr>
+    <th>支払い方法</th>
+    <td><%= @order.payment_method %></td>
+   </tr>
+  <tr>
+   <th>お届け先</th>
+   <td>
+     <%= @order.postal_code %>
+     <%= @order.address %>
+     <%= @order.name %>
+     </td>
+  </tr>
+  </table>
