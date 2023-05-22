@@ -7,9 +7,6 @@ ja:
         production: "制作中"
         preparing: "発送準備中"
         shipped: "発送済み"
-
-ja:
-  enums:
     order_item:
       production_status:
         cannot_start: "着手不可"
