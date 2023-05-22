@@ -1,7 +1,6 @@
 <span style="background-color: #C0C0C0;">ログイン</span><br>
 <span style="background-color: #C0C0C0;">会員の方はこちらからログイン</span>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_with model: @member, url: member_session_path do |f| %>
   <div class="field">
     <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
