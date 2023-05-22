@@ -17,4 +17,7 @@ class Item < ApplicationRecord
   (self.price_excluding_tax * 1.10).round
   end
 
+  def with_tax_price
+      (price_excluding_tax * 1.1).floor
+  end
 end
