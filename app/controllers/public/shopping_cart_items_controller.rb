@@ -5,7 +5,7 @@ class Public::ShoppingCartItemsController < ApplicationController
   end
   
   def create
-    @shopping_cart_item = current_member.shopping_cart_items.new(cart_item_params)
+    @shopping_cart_item = current_member.shopping_cart_items.new(shopping_cart_item_params)
     # もしカート内に「同じ商品」がある場合は、「数量を追加」し更新・保存する
     if current_member.shopping_cart_items.find_by(item_id: params[:shopping_cart_item][:item_id]).present?
       # 元々カート内にあるもの「item_id」
@@ -27,6 +27,10 @@ class Public::ShoppingCartItemsController < ApplicationController
   end
   
   def update
+    shopping_cart_items = ShoppingCartItem.find(params[:id])
+    shopping_cart_items.update(shopping_cart_item_params)
+    @shopping_cart_items = current_member.shopping_cart_items.all
+    redirect_to shopping_cart_items_path
   end
   
   def destroy

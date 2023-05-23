@@ -31,11 +31,12 @@
       <!--商品販売中の場合-->
       <% if @item.is_for_sale == true %> 
         <%= form_with(model: @shopping_cart_item, url: shopping_cart_items_path, method: :post, local: true) do |f| %>
-          <%= f.select :quantity, *[1..10] %>
+          <%= f.select :quantity, *[1..10], include_blank: "個数選択" %>
           <%= f.hidden_field :item_id, :value => @item.id %>
           <%= f.submit "カートに入れる", class: 'btn btn-success' %>
         <% end %>
       <% end %>
+      <%= link_to "商品一覧に戻る＞", items_path %>
     </div>
   </div>
 </div>

@@ -16,7 +16,9 @@
       <% @items.each do |item| %>
       <table>
         <tr>
-          <%= image_tag item.get_image, size: "100x100" %><br>
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_image, size: "100x100" %><br>
+          <% end %>
           <span><%= item.name %></span>
           <span>¥<%= item.price_excluding_tax %></span>
         </tr>
