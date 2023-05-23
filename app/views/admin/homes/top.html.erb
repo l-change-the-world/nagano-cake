@@ -19,12 +19,17 @@
               <% end %>
             </td>
             <td><%= order.name %></td>
-            <td><%#= order.order_quantity %></td>
+            <td>
+              <% order.order_items.each do |order_item| %>
+                <% @total += order_item.quantity %>
+              <% end %>
+              <%= @total %>
+            </td>
             <td><%= Order.statuses_i18n[order.status] %></td>
           </tr>
         <% end %>
         <%# ここまで繰り返し処理%>
-        <%#= paginate @orders %>
+        <%= paginate @orders %>
         <%# ページネーションの記述必要 %>
       </table>
       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>

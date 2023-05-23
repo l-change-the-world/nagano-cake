@@ -34,7 +34,7 @@
         </tr>
         <tr>
           <th>会員ステータス</th>
-          <td>有効or無効</td>
+          <td><%= @member.boolean_label(@member.is_deleted) %></td>
         </tr>
         <tr>
           <td><%= link_to '編集する', edit_admin_member_path(@member), class: "btn btn-sm btn-success" %></td>
