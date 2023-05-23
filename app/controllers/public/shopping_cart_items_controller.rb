@@ -2,6 +2,7 @@ class Public::ShoppingCartItemsController < ApplicationController
   
   def index
     @shopping_cart_items = current_member.shopping_cart_items.all
+    @total = 0
   end
   
   def create
@@ -41,8 +42,8 @@ class Public::ShoppingCartItemsController < ApplicationController
   end
   
   def destroy_all
-    shopping_cart_items = ShoppingCartItem.all
-    shopping_cart_items.destroy_all
+    @shopping_cart_items = ShoppingCartItem.all
+    @shopping_cart_items.destroy_all
     render 'index'
   end
   
