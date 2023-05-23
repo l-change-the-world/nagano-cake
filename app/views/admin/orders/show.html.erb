@@ -67,7 +67,10 @@
 <table class="bg-light">
   <tr>
     <th>商品合計</th>
-    <td></td>
+    <% @order_items.each do |order_item| %>
+      <% @total += order_item.subtotal %>
+    <% end %>
+    <td><%= @total%></td>
   </tr>
   <tr>
     <th>送料</th>
@@ -75,6 +78,6 @@
   </tr>
   <tr>
     <th>請求金額合計</th>
-    <td>total_payment_amount/円</td>
+    <td><%= @order.shipping_fee + @total %>円</td>
   </tr>
 </table>

@@ -5,6 +5,7 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @member = @order.member
     @order_items = @order.order_items
+    @total = 0
   end
 
   def update
