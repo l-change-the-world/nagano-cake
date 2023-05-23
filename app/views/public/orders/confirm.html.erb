@@ -1,1 +1,18 @@
-<h1>orders confirm</h1>
+<h2>注文情報確認</h2>
+  <table>
+    カート内容表示<%#岩井さんのカート部分を確認後記述%>
+  </table>
+  <table>
+    <tr>
+      <th>支払い方法</th>
+      <td><%= @order.payment_method_i18n %></td>
+    </tr>
+    <tr>
+     <th>お届け先</th>
+     <td>
+       <%= @order.postal_code %>
+       <%= @order.address %>
+       <%= @order.name %>
+     </td>
+    </tr>
+  </table>
