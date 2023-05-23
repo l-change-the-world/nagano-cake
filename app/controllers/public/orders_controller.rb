@@ -28,10 +28,9 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
-    else
+　　else
       render 'new'
     end
-    @cart_items = current_member.shopping_cart_items.all
   end
   
   def complete
