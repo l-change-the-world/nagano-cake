@@ -11,7 +11,7 @@ class Order < ApplicationRecord
     preparing: 3,
     shipped: 4,
   }
-   
+  
   # 支払方法
   enum payment_method: {
     credit_card: 0,

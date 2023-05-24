@@ -1,11 +1,21 @@
-<div class="container">
+<div class="mt-5 mb-3">
+  <div class="container ml-0">
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col">
+        <span class="bg-light h3 pl-3 pr-3"><%= @member.last_name %><%= @member.first_name %>さんの会員詳細</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container ml-0">
   <div class="row">
     <div class="col-1"></div>
-    <div class="col-8">
-      <h2 class="bg-light">~さんの会員詳細</h2>
-      <table>
+    <div class="col">
+      <table class="table table-borderless">
         <tr>
-          <th>会員ID</th>
+          <th class="col-2">会員ID</th>
           <td><%= @member.id %></td>
         </tr>
         <tr>
@@ -34,15 +44,14 @@
         </tr>
         <tr>
           <th>会員ステータス</th>
-          <td>有効or無効</td>
+          <td><%= @member.boolean_label(@member.is_deleted) %></td>
         </tr>
         <tr>
-          <td><%= link_to '編集する', edit_admin_member_path(@member), class: "btn btn-sm btn-success" %></td>
           <td></td>
-          <td><%= link_to '注文履歴一覧を見る', admin_path, class: "btn btn-sm btn-info" %></td>
+          <td class="col-2"><%= link_to '編集する', edit_admin_member_path(@member), class: "btn btn-sm btn-success pl-3 pr-3" %></td>
+          <td><%= link_to '注文履歴一覧を見る', admin_path, class: "btn btn-sm btn-primary pl-3 pr-3" %></td>
         </tr>
       </table>
     </div>
-    <div class="col-3"></div>
   </div>
 </div>

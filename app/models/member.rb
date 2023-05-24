@@ -24,4 +24,9 @@ class Member < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
+  
+  def boolean_label(value)
+    value ? '退会' : '有効'
+  end
+  
 end
