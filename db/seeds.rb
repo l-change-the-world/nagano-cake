@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create(email: "admin@co.jp", password: "naganocake", password_confirmation: "naganocake")
-
+Order.create(shipping_fee: 800)
 # ここから仮のデータ。実装前に削除
 Member.create(email:"public@co.jp",password:"naganocake",encrypted_password:"naganocake", last_name:"山田", first_name:"花子", last_name_ruby:"ヤマダ", first_name_ruby:"ハナコ", postal_code:"0000000", address:"宮崎県", telephone_number:"00000000000", is_deleted:true)
 Genre.create(name:"ケーキ")
