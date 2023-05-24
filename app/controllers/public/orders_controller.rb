@@ -14,7 +14,7 @@ class Public::OrdersController < ApplicationController
   end
   
   def confirm #注文情報入力確認画面
-     @cart_items = current_member.shopping_cart_items.all
+    @shopping_cart_items = current_member.shopping_cart_items.all
     @order = Order.new(order_params)
     if params[:order][:select_address] == "0"
       @order.postal_code = current_member.postal_code

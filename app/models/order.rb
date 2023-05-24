@@ -17,4 +17,9 @@ class Order < ApplicationRecord
     credit_card: 0,
     transfer: 1
   }
+  
+  def subtotal
+    item.with_tax_price * quantity
+  end
+  
 end

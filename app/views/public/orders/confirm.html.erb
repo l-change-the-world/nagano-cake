@@ -1,26 +1,28 @@
 <h2>注文情報確認</h2>
-  <table>
-    <tr>
-      <th>商品名</th>
-      <th>単価（税込）</th>
-      <th>数量</th>
-      <th>小計</th>
-    </tr>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>単価（税込）</th>
+        <th>数量</th>
+        <th>小計</th>
+      </tr>
+    </thead>
     <% total = 0 %><%#合計金額total初期化 %>
-    <% @cart_items.each do |cart_item| %>
+    <% @shopping_cart_items.each do |shopping_cart_item| %>
       <tr>
         <td>
-          <%= image_tag cart_item.item.get_image, size: "60x60" %>
-          <%= cart_item.item.name %>
+          <%= image_tag shopping_cart_item.item.get_image, size: "60x60" %><%#商品画像%>
+          <%= shopping_cart_item.item.name %><%#商品名%>
         </td>
-        <td>商品単価（税込） モデルに定義</td>
-        <td><%= cart_item.quantity %></td>
-        <td>小計金額 モデルに定義</td>
+        <td><%= shopping_cart_item.item.with_tax_price %></td><%#単価（税込）%>
+        <td><%= shopping_cart_item.quantity %></td><%#数量%>
+        <td><%= shopping_cart_item.subtotal %></td><%#小計%>
       </tr>
       合計金額表示
 　　<% end %>
   </table>
-  
+
   <table>
     <tr>
       <th>送料</th>
@@ -35,7 +37,7 @@
       <td></td>
     </tr>
   </table>
-  
+
   <table>
     <tr>
       <th>支払い方法</th>
