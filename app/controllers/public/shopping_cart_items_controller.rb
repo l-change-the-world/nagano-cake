@@ -1,10 +1,11 @@
 class Public::ShoppingCartItemsController < ApplicationController
-  
+  before_action :authenticate_member!
+
   def index
     @shopping_cart_items = current_member.shopping_cart_items.all
     @total = 0
   end
-  
+
   def create
     @shopping_cart_item = current_member.shopping_cart_items.new(shopping_cart_item_params)
     # もしカート内に「同じ商品」がある場合は、「数量を追加」し更新・保存する
@@ -24,32 +25,32 @@ class Public::ShoppingCartItemsController < ApplicationController
     else
       render 'index'
     end
-      
+
   end
-  
+
   def update
     shopping_cart_items = ShoppingCartItem.find(params[:id])
     shopping_cart_items.update(shopping_cart_item_params)
     @shopping_cart_items = current_member.shopping_cart_items.all
     redirect_to shopping_cart_items_path
   end
-  
+
   def destroy
     shopping_cart_item = ShoppingCartItem.find(params[:id])
     shopping_cart_item.destroy
     @shopping_cart_items = ShoppingCartItem.all
     render 'index'
   end
-  
+
   def destroy_all
     @shopping_cart_items = ShoppingCartItem.all
     @shopping_cart_items.destroy_all
     render 'index'
   end
-  
+
   private
   def shopping_cart_item_params
     params.require(:shopping_cart_item).permit(:item_id, :quantity)
   end
-  
+
 end

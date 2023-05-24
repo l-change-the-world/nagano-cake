@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   }
 
   #会員側ルーティング
-  get '/' => 'public/homes#top'
+  root to: 'public/homes#top'
   get '/about' => 'public/homes#about'
 
   scope module: :public do
