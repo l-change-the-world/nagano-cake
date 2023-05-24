@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :order_items, dependent: :destroy
   has_many :shopping_cart_items, dependent: :destroy
+  has_many :orders, through: :ordered_items, dependent: :destroy
 
   def get_image
     unless image.attached?
@@ -17,4 +18,7 @@ class Item < ApplicationRecord
   (self.price_excluding_tax * 1.10).round
   end
 
+  def with_tax_price
+      (price_excluding_tax * 1.1).floor
+  end
 end

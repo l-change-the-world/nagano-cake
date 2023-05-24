@@ -14,12 +14,6 @@ Rails.application.routes.draw do
   get '/about' => 'public/homes#about'
 
   scope module: :public do
-    get "/members/my_page" => "members#show"
-    get "/members/information/edit" => "members#edit"
-    patch "/members/information" => "members#update"
-    get "/members/quit" => "members#quit"
-    patch "/members/out" => "members#out"
-    
     resources :items, only: [:index, :show]
     resources :shopping_cart_items, only: [:index, :create, :update, :destroy] do
       collection do
@@ -29,6 +23,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :index, :show, :create] do
       collection do
         get 'confirm'
+        post 'confirm'
         get 'complete'
       end
     end
@@ -37,8 +32,8 @@ Rails.application.routes.draw do
 
   # 管理者側ルーティング
   namespace :admin do
-   resources :items, only: [:new, :create, :show, :edit, :update, :index]
-   resources :genres, only: [:new, :create, :index, :edit, :update, :destroy]
+   resources :items, only: [:new, :index, :create, :show, :edit, :update]
+   resources :genres, only: [:new, :create, :index, :edit, :update]
 
   get '/' => 'homes#top'
    resources :members, only: [:index, :show, :edit, :update]
