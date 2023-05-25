@@ -10,6 +10,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @member = current_member
+    @order = Order.find(params[:id])
+    @total = 0
   end
 
   def create
