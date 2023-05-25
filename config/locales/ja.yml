@@ -7,6 +7,7 @@ ja:
         production: "制作中"
         preparing: "発送準備中"
         shipped: "発送済み"
+        
       payment_method:
        credit_card: "クレジットカード"
        transfer: "銀行振込"

@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_member!
+  
   def new #注文情報入力画面
     @order = Order.new
   end

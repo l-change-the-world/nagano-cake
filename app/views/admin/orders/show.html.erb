@@ -16,19 +16,20 @@
       <table class="table table-borderless">
         <tr>
           <th class="col-2">氏名</th>
-          <td>
+          <td class="col-2">
             <%= link_to admin_member_path(@member), class:"text-dark" do %>
               <%= @member.last_name %><%= @member.first_name %>
             <% end %>
           </td>
+          <td></td>
         </tr>
         <tr>
           <th>注文日</th>
           <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
-          <th>配送先</th>
-          <td>
+          <th scope="row">配送先</th>
+          <td colspan="2">
             〒<%= @order.postal_code %>
             <%= @order.address %>
             <%= @order.name %>
@@ -37,18 +38,19 @@
         <tr>
           <th>支払方法</th>
           <td>
-            <%= @order.payment_method %>
-            <%#= Order.payment_methods_i18n[@order.payment_method] %>
+            <%= Order.payment_methods_i18n[@order.payment_method] %>
           </td>
         </tr>
         <tr>
-          <th>注文ステータス</th>
-          <td>
-            <%= form_with model: @order, url: admin_order_path(@order),local: true, class: "form-row" do |f| %>
-              <%= f.select :status, Order.statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-2 text-center" %>
-              <%= f.submit "更新" %>
-            <% end %>
+          <th class="align-middle">注文ステータス</th>
+          <%= form_with model: @order, url: admin_order_path(@order),local: true, class: "form-row" do |f| %>
+          <td class="align-middle">
+            <%= f.select :status, Order.statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm text-center" %>
           </td>
+          <td class="align-middle">
+            <%= f.submit "更新", class:"btn btn-success" %>
+          </td>
+          <% end %>
         </tr>
       </table>
     </div>
@@ -66,20 +68,24 @@
           <th>数量</th>
           <th>小計</th>
           <th>制作ステータス</th>
+          <th></th>
         </tr>
         <% @order_items.each do |order_item| %>
           <tr>
-            <td><%= order_item.item.name %></td>
-            <td><%= order_item.price %></td>
-            <td><%= order_item.quantity %></td>
-            <td><%= order_item.subtotal %></td>
-            <td>
-              <%= form_with model: order_item, url: admin_order_item_path(order_item),local: true, class: "form-row" do |f| %>
-                <%= f.select :production_status, OrderItem.production_statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6" %>
-                <%= f.submit "更新" %>
-              <% end %>
+            <td class="align-middle"><%= order_item.item.name %></td>
+            <td class="align-middle"><%= order_item.price %></td>
+            <td class="align-middle"><%= order_item.quantity %></td>
+            <td class="align-middle"><%= order_item.subtotal %></td>
+            <%= form_with model: order_item, url: admin_order_item_path(order_item),local: true, class: "form-row" do |f| %>
+            <td class="align-middle">
+              <%= f.select :production_status, OrderItem.production_statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm text-center" %>
             </td>
+            <td class="align-middle">
+              <%= f.submit "更新", class:"btn btn-success" %>
+            </td>
+            <% end %>
           </tr>
+
         <% end %>
       </table>
     </div>
