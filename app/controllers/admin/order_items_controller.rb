@@ -8,10 +8,10 @@ class Admin::OrderItemsController < ApplicationController
 
     is_updated =true
     if @order_item.update(order_item_params)
-       @order.update(status: 2) if @order_item.item_status == "production"
+       @order.update(status: 2) if @order_item.production_status == "production"
 
         @order_items.each do |order_item|
-          if order_item.item_status != "complete"
+          if order_item.production_status != "complete"
             is_updated = false
           end
         end
@@ -24,6 +24,6 @@ class Admin::OrderItemsController < ApplicationController
 
   private
   def order_item_params
-    params.require(:order_item).permit(:item_status)
+    params.require(:order_item).permit(:production_status)
   end
 end
