@@ -9,7 +9,6 @@
   </div>
 </div>
 
-
 <div class="container">
   <div class="row　row-cols-2">
     <div class="col">
@@ -26,15 +25,22 @@
 </div>
 
 <div class="container" >
-  <div>
-   <p>ジャンル</p>
-   <table>
-    <% @genres.each do |genre| %>
-     <tr>
-      <td><%= genre.name %></td>
-      <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-sm btn-success" %></td>
-     </tr>
-    <% end %>
-   </table>
+  <div class="row row-cols-3">
+    <div class="col">
+      <table class="table">
+        <tr class="bg-light">
+          <th>ジャンル</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <% @genres.each do |genre| %>
+        <tr>
+          <td><%= genre.name %></td>
+          <td>　　　</td>
+          <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-sm btn-success" %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 </div>
