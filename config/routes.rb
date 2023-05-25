@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   get '/about' => 'public/homes#about'
 
   scope module: :public do
+    get "/members/my_page" => "members#show"
+    get "/members/information/edit" => "members#edit"
+    patch "/members/information" => "members#update"
+    get "/members/quit" => "members#quit"
+    patch "/members/out" => "members#out"
     resources :items, only: [:index, :show]
     resources :shipping_addresses, only:[:index, :edit, :create, :update, :destroy]
     resources :shopping_cart_items, only: [:index, :create, :update, :destroy] do

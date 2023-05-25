@@ -25,7 +25,7 @@
               </td>
               <td>
                 <% order.order_items.each do |item| %>
-                <%= order_item.item.name %><br>
+                <%= item.item_id %><br>
                 <% end %>
               </td>
                 <td><%= order.payment_method %></td>
