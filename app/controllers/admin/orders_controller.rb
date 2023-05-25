@@ -11,7 +11,7 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_item = @order.order_items
     if @order.update(order_params)
-      @order_item.update_all(production_status: 1) if @order.status == "paid_check"
+      @order_item.update_all(item_status: 1) if @order.status == "paid_check"
       redirect_to admin_order_path(@order)
       else
       redirect_to admin_order_path(@order)

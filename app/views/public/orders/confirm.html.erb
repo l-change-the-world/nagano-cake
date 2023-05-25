@@ -1,1 +1,53 @@
-<h1>orders confirm</h1>
+<div class="container my-4">
+  <div class="row my-4">
+  <h1>注文情報確認</h1>
+  </div>
+  <div class="row">
+    <div class=col-8>
+    <table class='table table-bordered'>
+      <thead class="thead-light">
+        <tr><th>商品名</th><th>単価（税込）</th><th>数量</th><th>小計</th></tr>
+      </thead>
+      <tbody>
+        <% @shopping_cart_items.each do |shopping_cart_item| %>
+
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+    <div class='col-3'>
+      <table class='table table-bordered'>
+        <thead class="thead-light">
+          <th>送料</th>
+            <td><%= @order.shopping_cost.to_s %></td>
+              <th>商品合計</th>
+            <td><%= @total %></td>
+              <th>請求金額</th>
+            <td><%= @order.shopping_cost + @total %></td>
+        </thead>
+      </table>
+      </div>
+    </div>
+  <div class='row'>
+    <h5>支払い方法</h5>
+    <%= @order.payment_method_i18n %>
+  </div>
+  <div class='row'>
+    <h5>お届け先</h5>
+    〒<%= @order.postal_code %>
+    <%= @order.address %>
+     <%= @order.name %>
+  </div>
+    <%= form_with model:@order ,url:orders_path, method: :post do |f| %>
+      <%= f.hidden_field :postal_code %>
+      <%= f.hidden_field :address %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :shopping_cost %>
+      <%= f.hidden_field :total_payment, value: @total+@order.shopping_cost %>
+      <%= f.hidden_field :payment_method %>
+  <div class='row'>
+      <%= f.submit "注文を確定する", class:'btn btn-success' %>
+      <% end %>
+  </div>
+
+  </div>

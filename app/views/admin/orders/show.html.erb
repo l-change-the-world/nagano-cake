@@ -55,7 +55,7 @@
       <td><%= order_item.subtotal %></td>
       <td>
         <%= form_with model: order_item, url: admin_order_item_path(order_item),local: true, class: "form-row" do |f| %>
-          <%= f.select :production_status, OrderItem.production_statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6" %>
+          <%= f.select :item_status, OrderItem.production_statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6" %>
           <%= f.submit "更新" %>
         <% end %>
       </td>

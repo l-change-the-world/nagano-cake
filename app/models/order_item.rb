@@ -15,6 +15,4 @@ class OrderItem < ApplicationRecord
     price * quantity
   end
   
-  
-  
 end
