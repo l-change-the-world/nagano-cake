@@ -7,6 +7,11 @@ ja:
         production: "制作中"
         preparing: "発送準備中"
         shipped: "発送済み"
+
+      payment_method:
+       credit_card: "クレジットカード"
+       transfer: "銀行振込"
+
     order_item:
       production_status:
         cannot_start: "着手不可"
@@ -14,9 +19,3 @@ ja:
         production: "製作中"
         complete: "製作完了"
 
-ja:
-  enums:
-    order:
-      payment_method:
-       credit_card: "クレジットカード"
-       transfer: "銀行振込"
