@@ -16,7 +16,7 @@
           <% @order.each do |order| %>
             <tr>
               <td>
-                <%= order.created_at.strftime('%Y/%m/%d') %>
+                <%= order.created_at %>
               </td>
               <td>
                 <%= order.postal_code %>
@@ -25,10 +25,10 @@
               </td>
               <td>
                 <% order.order_items.each do |item| %>
-                <%= item.item.name %><br>
+                <%= item.item_id %><br>
                 <% end %>
               </td>
-                <td><%= order.total_payment_amount %></td>
+                <td><%= order.payment_method %></td>
                <td><%= order.status_i18n %></td>
               <td><%= link_to '表示する', order_path(order.id),class:'btn btn-primary' %></td>
             </tr>

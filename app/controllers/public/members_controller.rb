@@ -10,7 +10,7 @@ class Public::MembersController < ApplicationController
 
 
     def update
-      @member = Member.find(current_member.id)
+      @member = Member.find(current_customer.id)
       #@member = current_member
       if @member.update(member_params)
         redirect_to '/members/my_page'
