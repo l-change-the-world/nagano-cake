@@ -5,12 +5,12 @@
       <h2 class="bg-light">
         <%= @member.last_name %><%= @member.first_name %>さんの会員詳細
       </h2>
+      <%= form_with model:@member, url:members_information_path(current_member),method: :patch do |f| %>
       <table>
         <tr>
           <th>会員ID</th>
           <td><%= @member.id %></td>
         </tr>
-        <%= form_with model:@member, url:members_information_path(current_member),method: :patch do |f| %>
           <tr>
             <th>氏名</th>
             <td><%= f.text_field :last_name %></td>
@@ -42,8 +42,8 @@
             <td><div></div></td>
           <td><%= link_to "退会する", members_quit_path, class: 'btn btn-danger' %></td>
           </tr>
-        <% end %>
       </table>
+      <% end %>
     </div>
     <div class="col-3"></div>
   </div>
