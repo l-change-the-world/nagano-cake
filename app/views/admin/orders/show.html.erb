@@ -1,80 +1,109 @@
-<h2 class="bg-light">~さんの注文詳細</h2>
-<table class="bg-secondary">
-  <tr>
-    <th>氏名</th>
-    <td>
-      <%= link_to admin_member_path(@member) do %>
-        <%= @member.last_name %><%= @member.first_name %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <th>注文日</th>
-    <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
-  </tr>
-  <tr>
-    <th>配送先</th>
-    <td>
-      〒<%= @order.postal_code %>
-      <%= @order.address %>
-      <%= @order.name %>
-    </td>
-  </tr>
-  <tr>
-    <th>支払方法</th>
-    <td>
-      <%= @order.payment_method %>
-    </td>
-  </tr>
-  <tr>
-    <th>注文ステータス</th>
-    <td>
-      <%= form_with model: @order, url: admin_order_path(@order),local: true, class: "form-row" do |f| %>
-        <%= f.select :status, Order.statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6" %>
-        <%= f.submit "更新" %>
-      <% end %>
-    </td>
-  </tr>
-</table>
+<div class="mt-5">
+  <div class="container ml-0">
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col">
+        <span class="bg-light h3 pl-3 pr-3"> <%= @member.last_name %><%= @member.first_name %>さんの注文詳細 </span>
+      </div>
+    </div>
+  </div>
+</div>
 
-<table class="bg-info">
-  <tr>
-    <th>商品名</th>
-    <th>単価(税込)</th>
-    <th>数量</th>
-    <th>小計</th>
-    <th>制作ステータス</th>
-  </tr>
-  <%# ここから繰り返し処理 %>
-  <% @order_items.each do |order_item| %>
-    <tr>
-      <td><%= order_item.item.name %></td>
-      <td><%= order_item.price %></td>
-      <td><%= order_item.quantity %></td>
-      <%#= ここはcountメソッド？@books.book_comments.count %>
-      <td><%= order_item.subtotal %></td>
-      <td>
-        <%= form_with model: order_item, url: admin_order_item_path(order_item),local: true, class: "form-row" do |f| %>
-          <%= f.select :item_status, OrderItem.production_statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6" %>
-          <%= f.submit "更新" %>
+<div class="container ml-0">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col">
+      <table class="table table-borderless">
+        <tr>
+          <th class="col-2">氏名</th>
+          <td>
+            <%= link_to admin_member_path(@member), class:"text-dark" do %>
+              <%= @member.last_name %><%= @member.first_name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>注文日</th>
+          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <th>配送先</th>
+          <td>
+            〒<%= @order.postal_code %>
+            <%= @order.address %>
+            <%= @order.name %>
+          </td>
+        </tr>
+        <tr>
+          <th>支払方法</th>
+          <td>
+            <%= @order.payment_method %>
+            <%#= Order.payment_methods_i18n[@order.payment_method] %>
+          </td>
+        </tr>
+        <tr>
+          <th>注文ステータス</th>
+          <td>
+            <%= form_with model: @order, url: admin_order_path(@order),local: true, class: "form-row" do |f| %>
+              <%= f.select :status, Order.statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-2 text-center" %>
+              <%= f.submit "更新" %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="container ml-0">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-7">
+      <table class="table">
+        <tr class="bg-light">
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>制作ステータス</th>
+        </tr>
+        <% @order_items.each do |order_item| %>
+          <tr>
+            <td><%= order_item.item.name %></td>
+            <td><%= order_item.price %></td>
+            <td><%= order_item.quantity %></td>
+            <td><%= order_item.subtotal %></td>
+            <td>
+              <%= form_with model: order_item, url: admin_order_item_path(order_item),local: true, class: "form-row" do |f| %>
+                <%= f.select :production_status, OrderItem.production_statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6" %>
+                <%= f.submit "更新" %>
+              <% end %>
+            </td>
+          </tr>
+
         <% end %>
-      </td>
-    </tr>
-  <% end %>
-  <%# ここまで繰り返し処理%>
-</table>
+      </table>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-3">
+      <table class="table table-borderless">
+        <tr>
+          <th>商品合計</th>
+          <% @order_items.each do |order_item| %>
+            <% @total += order_item.subtotal %>
+          <% end %>
+          <td><%= @total %></td>
+        </tr>
+        <tr>
+          <th>送料</th>
+          <td><%= @order.shipping_fee %>円</td>
+        </tr>
+        <tr>
+          <th>請求金額合計</th>
+          <td><%= @order.shipping_fee + @total %>円</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
 
-<table class="bg-light">
-  <tr>
-    <th>商品合計</th>
-    <td></td>
-  </tr>
-  <tr>
-    <th>送料</th>
-    <td><%= @order.shipping_fee %>円</td>
-  </tr>
-  <tr>
-    <th>請求金額合計</th>
-    <td>total_payment_amount/円</td>
-  </tr>
-</table>

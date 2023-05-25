@@ -1,5 +1,6 @@
 class ShippingAddress < ApplicationRecord
   belongs_to :member
+
   # バリデーション
   validates :address, presence: true
   validates :name, presence: true

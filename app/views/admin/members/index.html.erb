@@ -1,10 +1,20 @@
+<div class="mt-5 mb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 class="bg-light text-center col-5">会員一覧</h3>
+      </div>
+      <div class="col-8"></div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <div class="row">
-    <div class="col-2"></div>
-    <div class="col-8">
-      <h2 class="bg-light">会員一覧</h2>
-      <table>
-        <tr>
+    <div class="col-1"></div>
+    <div class="col-9">
+      <table class="table">
+        <tr class="bg-light">
           <th>会員ID</th>
           <th>氏名</th>
           <th>メールアドレス</th>
@@ -15,18 +25,22 @@
         <tr>
           <td><%= member.id %></td>
           <td>
-            <%= link_to admin_member_path(member) do %>
+            <%= link_to admin_member_path(member), class: "text-dark" do %>
               <%= member.last_name %><%= member.first_name %>
             <% end %>
           </td>
           <td><%= member.email %></td>
-          <td><%#= member.status %></td>
-          <%# ページネーションの記述必要 %>
+            <% if member.is_deleted == false %>
+              <td class="text-success font-weight-bold"><%= member.boolean_label(member.is_deleted) %></td>
+            <% else %>
+              <td class="text-secondary font-weight-bold"><%= member.boolean_label(member.is_deleted) %></td>
+            <% end %>
         </tr>
         <% end %>
+        <%= paginate @members %>
         <%# ここまで繰り返し処理%>
       </table>
+      <div class="col"></div>
     </div>
-    <div class="col-2"></div>
   </div>
 </div>

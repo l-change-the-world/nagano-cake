@@ -12,15 +12,20 @@
           購入には会員登録が必要になります。
         </p>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-8">
       <h2>新着商品</h2>
       <% @items.each do |item| %>
-      <table>
-        <tr>
-          <%= image_tag item.get_image, size: "100x100" %><br>
-          <span><%= item.name %></span>
-          <span>¥<%= item.price_excluding_tax %></span>
-        </tr>
-      </table>
+        <div>
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_image, size: "100x100" %>
+          <% end %>
+        </div>
+        <div><%= item.name %></div>
+        <div>¥<%= item.price_excluding_tax %></div>
       <% end %>
       <%= link_to "全ての商品を見る＞", items_path %>
     </div>

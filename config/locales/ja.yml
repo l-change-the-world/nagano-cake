@@ -13,3 +13,10 @@ ja:
         waiting: "製作待ち"
         production: "製作中"
         complete: "製作完了"
+
+ja:
+  enums:
+    order:
+      payment_method:
+       credit_card: "クレジットカード"
+       transfer: "銀行振込"
