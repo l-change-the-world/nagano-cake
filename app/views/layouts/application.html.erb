@@ -17,7 +17,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if member_signed_in? %>
-            <li class="nav-item">
+            <li class="nav-item-name">
               ようこそ、<%= current_member.last_name %>さん！
             </li>
             <li class="nav-item">
@@ -34,7 +34,7 @@
             </li>
             <% elsif admin_signed_in? %>
             <li class="nav-item">
-              <%= link_to "商品一覧", admin_members_path, class: 'nav-link text-dark' %>
+              <%= link_to "商品一覧", admin_items_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
               <%= link_to '会員一覧', admin_members_path, class: 'nav-link text-dark' %>
@@ -70,7 +70,18 @@
     <main class="mb-auto">
       <%= yield %>
     </main>
-    <footer>
+    <footer class="bg-secondary text-white pt-5 pb-4">
+      <div class="container">
+        <div class="row">
+          <div class="social-networking-service">
+            <i class="fa-brands fa-instagram fa-2x"></i>
+            <i class="fa-brands fa-twitter fa-2x"></i>
+            <i class="fa-brands fa-facebook fa-2x"></i>
+            <i class="fa-brands fa-tiktok fa-2x"></i>
+            <i class="fa-brands fa-youtube fa-2x"></i>
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

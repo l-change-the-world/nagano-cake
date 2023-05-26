@@ -1,1 +1,17 @@
 @use '~bootstrap/scss/bootstrap';
+.nav-item{
+  border: 1px solid;
+  border-radius: 6px; 
+  box-shadow: 0px 0px 15px 0px rgba(98,98,98,0.8);
+  margin: 10px;
+ }
+
+.nav-item-name{
+  position: absolute;
+  left: 500px;
+  top: 100px;
+}
+
+.fa-brands{
+  margin: 10px;
+}
