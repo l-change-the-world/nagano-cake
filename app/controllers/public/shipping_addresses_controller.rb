@@ -6,7 +6,7 @@ before_action :authenticate_member!
   end
 
   def index
-    @shipping_addresses = ShippingAddress.all
+    @shipping_addresses = ShippingAddress.find(params[:id])
     @shipping_address = ShippingAddress.new
   end
 

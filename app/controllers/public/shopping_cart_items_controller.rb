@@ -38,12 +38,12 @@ class Public::ShoppingCartItemsController < ApplicationController
   def destroy
     shopping_cart_item = ShoppingCartItem.find(params[:id])
     shopping_cart_item.destroy
-    @shopping_cart_items = ShoppingCartItem.all
+
     render 'index'
   end
 
   def destroy_all
-    @shopping_cart_items = ShoppingCartItem.all
+    @shopping_cart_items = current_member.shopping_cart_items.all
     @shopping_cart_items.destroy_all
     render 'index'
   end
