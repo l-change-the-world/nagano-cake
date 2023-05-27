@@ -6,7 +6,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @order = Order.all
+    @order = current_member.orders
   end
 
   def show
