@@ -18,8 +18,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if member_signed_in? %>
-
-            <li class="nav-item-name">
+            <li class="nav-item border-0 text-center h3">
               ようこそ、<%= current_member.last_name %>さん！
             </li>
             <li class="nav-item">
@@ -68,7 +67,23 @@
           </div>
         </div>
       </nav>
-
+      <div class="container mb-2">
+        <div class="row">
+          <div class="col-9"></div>
+          <div class="col">
+            <%= form_tag(search_path, method: 'get', class: 'search-form') do %>
+              <div class="input-group">
+                <%= text_field_tag :search, nil, class: 'form-control', placeholder: 'ここで検索！！' %>
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </span>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </header>
     <main class="mb-auto">
       <%= yield %>
