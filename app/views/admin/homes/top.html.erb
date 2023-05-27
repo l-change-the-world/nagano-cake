@@ -31,11 +31,15 @@
               <td><%= Order.statuses_i18n[order.status] %></td>
             </tr>
           <% end %>
-          <%= paginate @orders %>
         </table>
       </div>
     </div>
   </div>
 </div>
-      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-      <%# このログアウトボタンは開発段階のもの。実装するときは忘れずに消すように！！ %>
+<div class="container">
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-1"><%= paginate @orders %></div>
+    <div class="col"></div>
+  </div>
+</div>

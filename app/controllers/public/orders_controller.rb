@@ -1,13 +1,18 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_member!
+
   def new #注文情報入力画面
     @order = Order.new
   end
 
   def index
+    @order = Order.all
   end
 
   def show
+    @member = current_member
+    @order = Order.find(params[:id])
+    @total = 0
   end
 
   def create
@@ -36,7 +41,7 @@ class Public::OrdersController < ApplicationController
       @order.address = current_member.address
       @order.name = current_member.last_name + current_member.first_name
     elsif params[:order][:select_address] == "1"
-      ship = ShippingAddresses.find(params[:order][:member_id])#orderのmember_id(=カラム)でアドレス(帳)を選び、そのデータ送る
+      ship = ShippingAddress.find(params[:order][:shipping_address])#orderのmember_id(=カラム)でアドレス(帳)を選び、そのデータ送る
       @order.postal_code = ship.postal_code
       @order.address = ship.address
       @order.name = ship.name
@@ -54,7 +59,7 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_fe, :member_id, :total_payment_amount, :status)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_fee, :member_id, :total_payment_amount, :status)
   end
 
 end

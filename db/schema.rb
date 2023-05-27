@@ -68,6 +68,11 @@ ActiveRecord::Schema.define(version: 2023_05_24_045640) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "lists", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "members", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

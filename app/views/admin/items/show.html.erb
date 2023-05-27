@@ -1,11 +1,17 @@
-<div class ="container">
-  <h2>商品詳細</h2>
-    <div class ="row align-items-center">
-      <div class ="col-5">
-       <%= image_tag @item.get_image, size: "250x200" %>
+<div class="mt-5">
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-4">
+        <h3 class="bg-light text-center col-8">商品詳細</h3>
       </div>
-      <div class ="col-7">
-        <table>
+      <div class="col-8"></div>
+      
+      <div class ="col-5 text-center mt-5">
+         <%= image_tag @item.get_image, size: "250x200" %>
+      </div>
+      <div class ="col-7 mt-5">
+        <table class="table table-borderless height="50"">
           <tr>
             <th>商品名</th>
             <td><%= @item.name %></td>
@@ -25,18 +31,17 @@
           <tr>
             <th>販売ステータス</th>
             <td>
-        　     <span style="color: <%= @item.is_for_sale ? 'green' : 'red' %>">
+              <p class="<%= @item.is_for_sale ? 'text-success font-weight-bold' : 'text-secondary font-weight-bold' %> ">
                 <%= @item.is_for_sale ? '販売中' : '売切れ' %>
-              </span>
+              </p>
             </td>
           </tr>
         </table>
       </div>
-    </div>
-    
-    <div class ="row align-items-end">   
-      <div class="col-md-6 offset-md-3">
+      
+      <div class="text-center col">
         <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>
       </div>
     </div>
- </div>
+  </div>
+</div>

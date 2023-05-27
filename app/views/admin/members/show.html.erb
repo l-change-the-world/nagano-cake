@@ -44,7 +44,11 @@
         </tr>
         <tr>
           <th>会員ステータス</th>
-          <td><%= @member.boolean_label(@member.is_deleted) %></td>
+          <% if @member.is_deleted == false %>
+            <td class="text-success font-weight-bold"><%= @member.boolean_label(@member.is_deleted) %></td>
+          <% else %>
+            <td class="text-secondary font-weight-bold"><%= @member.boolean_label(@member.is_deleted) %></td>
+          <% end %>
         </tr>
         <tr>
           <td></td>
