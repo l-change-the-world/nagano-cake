@@ -1,41 +1,61 @@
-<span style="background-color: #C0C0C0;">ショッピングカート</span>
-<%= link_to "カートを空にする", destroy_all_shopping_cart_items_path, method: :delete, class: 'btn btn-danger' %>
-<table border="1">
-  <thead>
-    <th>商品名</th>
-    <th>単価（税込）</th>
-    <th>数量</th>
-    <th>小計</th>
-    <th></th>
-  </thead>
-  <tbody>
-    <% @total = 0 %>
-    <% @shopping_cart_items.each do |shopping_cart_item| %>
+<div class="container">
+  <div class="row mt-5">
+    <div>
+      <span class="bg-light h3">ショッピングカート</span>
+    </div>
+    <div class="col d-flex flex-row-reverse">
+　　  <%= link_to "カートを空にする", destroy_all_shopping_cart_items_path, method: :delete, class: 'btn btn-danger' %>
+　　</div>
+　</div>
+　<div class="row mt-5">
+    <table class="table table-bordered">
+      <thead class="table-secondary">
+        <th>商品名</th>
+        <th>単価（税込）</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <% @total = 0 %>
+        <% @shopping_cart_items.each do |shopping_cart_item| %>
+        <tr>
+          <td>
+            <%= image_tag shopping_cart_item.item.get_image, size: "60x60" %>
+            <%= shopping_cart_item.item.name %>
+          </td>
+          <td>¥<%= shopping_cart_item.item.with_tax_price %></td>
+          <td>
+            <%= form_with model: @shopping_cart_items, url: shopping_cart_item_path(shopping_cart_item.id), local: true, method: :patch do |f| %>
+              <%= f.select :quantity, *[1..10], selected: shopping_cart_item.quantity %>
+              <%= f.submit "変更", class: "btn btn-success" %>
+            <% end %>
+          </td>
+          <td>¥<%= shopping_cart_item.subtotal %></td>
+          <td class="text-center"><%= link_to "削除する", shopping_cart_item_path(shopping_cart_item.id, shopping_cart_item), method: :delete, class: "btn btn-danger" %></td>
+        </tr>
+        <% @total = @total+shopping_cart_item.subtotal %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row mt-5">
+    <div class="col-lg-10 text-left">
+      <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
+    </div>
+    <table class="col-lg-2 table table-bordered">
       <tr>
-        <td>
-          <%= image_tag shopping_cart_item.item.get_image, size: "60x60" %>
-          <%= shopping_cart_item.item.name %>
-        </td>
-        <td><%= shopping_cart_item.item.with_tax_price %></td>
-        <td>
-          <%= form_with model: @shopping_cart_items, url: shopping_cart_item_path(shopping_cart_item.id), local: true, method: :patch do |f| %>
-            <%= f.select :quantity, *[1..10], selected: shopping_cart_item.quantity %>
-            <%= f.submit "変更", class: "btn btn-success" %>
-          <% end %>
-        </td>
-        <td><%= shopping_cart_item.subtotal %></td>
-        <td><%= link_to "削除する", shopping_cart_item_path(shopping_cart_item.id, shopping_cart_item), method: :delete, class: "btn btn-danger" %></td>
+        <th class="table-secondary">合計金額</th>
+        <td>¥<%= @total %></td>
       </tr>
-      <% @total = @total+shopping_cart_item.subtotal %>
-    <% end %>
-    <tr>
-      <td>合計金額</td>
-      <td><%= @total %></td>
-    </tr>
-  </tbody>
-  <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
-  <% if @shopping_cart_items.any? %>
-    <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
-  <% end %>
-</table>
-
+    </table>
+  </div>
+  <div class="row mt-5 mb-5">
+    <div class="col-5"></div>
+      <div class="center-block">
+        <% if @shopping_cart_items.any? %>
+          <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
+        <% end %>
+      </div>
+  </div>
+</div>

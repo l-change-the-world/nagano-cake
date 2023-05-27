@@ -18,7 +18,8 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if member_signed_in? %>
-            <li class="nav-item align-middle">
+
+            <li class="nav-item-name">
               ようこそ、<%= current_member.last_name %>さん！
             </li>
             <li class="nav-item">
@@ -72,8 +73,19 @@
     <main class="mb-auto">
       <%= yield %>
     </main>
-    <footer>
-      <div class
+
+    <footer class="bg-secondary text-white pt-5 pb-4">
+      <div class="container">
+        <div class="row">
+          <div class="social-networking-service">
+            <i class="fa-brands fa-instagram fa-2x"></i>
+            <i class="fa-brands fa-twitter fa-2x"></i>
+            <i class="fa-brands fa-facebook fa-2x"></i>
+            <i class="fa-brands fa-tiktok fa-2x"></i>
+            <i class="fa-brands fa-youtube fa-2x"></i>
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

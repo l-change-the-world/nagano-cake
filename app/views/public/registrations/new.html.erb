@@ -1,5 +1,5 @@
 <div class="mt-5 ml-5">
-  <span style="background-color: #C0C0C0;">新規会員登録</span>
+  <span class="bg-light h3">新規会員登録</span>
 </div>
 <%= form_with model: @member, url: member_registration_path, id: 'new_member', class: 'new_member' do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
@@ -63,8 +63,8 @@
   </table>
 <% end %>
 
-<div class="mt-5 ml-5">
-  <span style="background-color: #C0C0C0;">既に登録済みの方</span><br>
+<div class="mt-5 ml-5 mb-5">
+  <span class="bg-light h5">既に登録済みの方</span><br>
   <%= link_to "こちら", new_member_session_path %>からログインしてください。
 </div>
 <!--<%= render "public/shared/links" %>-->
