@@ -13,7 +13,3 @@
  *= require_tree .
  *= require_self
  */
- .nav-item{
-  background-color: yellow;
-  border-radius: 6px; 
- }
