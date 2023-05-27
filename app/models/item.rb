@@ -6,6 +6,10 @@ class Item < ApplicationRecord
   has_many :shopping_cart_items, dependent: :destroy
   has_many :orders, through: :ordered_items, dependent: :destroy
   
+  validates :image, presence: true
+  validates :name, presence: true
+  validates :price_excluding_tax, presence: true
+  validates :is_for_sale, presence: true
 
   def get_image
     unless image.attached?
