@@ -31,9 +31,15 @@
               <td><%= Order.statuses_i18n[order.status] %></td>
             </tr>
           <% end %>
-          <%= paginate @orders %>
         </table>
       </div>
     </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-1"><%= paginate @orders %></div>
+    <div class="col"></div>
   </div>
 </div>
