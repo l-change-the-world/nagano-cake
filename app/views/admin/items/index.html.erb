@@ -28,15 +28,15 @@
               <td><%= item.genre.name %></td>
               <td></td>
               <td>
-                <span style="color: <%= item.is_for_sale ? 'green' : 'red' %>">
+                <p class="<%= item.is_for_sale ? 'text-success font-weight-bold' : 'text-secondary font-weight-bold' %> ">
                   <%= item.is_for_sale ? '販売中' : '売切れ' %>
-                </span>
+                </p>
               </td>
             </tr>
           <% end %>
         </tbody>
       </table>
-  　  <%= paginate @items %>
     </div>
   </div>
 </div>
+ <%= paginate @items %>
