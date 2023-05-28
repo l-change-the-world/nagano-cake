@@ -1,0 +1,59 @@
+<div class="mt-4 mb-3">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <span class="bg-light h3 pl-3 pr-3"><%= @member.last_name %><%= @member.first_name %>さんの会員詳細</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table table-borderless">
+        <tr>
+          <th class="col-2">会員ID</th>
+          <td><%= @member.id %></td>
+        </tr>
+        <tr>
+          <th>氏名</th>
+          <td><%= @member.last_name %><%= @member.first_name %></td>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <td><%= @member.last_name_ruby %><%= @member.first_name_ruby %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @member.postal_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @member.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @member.telephone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @member.email %></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <% if @member.is_deleted == false %>
+            <td class="text-success font-weight-bold"><%= @member.boolean_label(@member.is_deleted) %></td>
+          <% else %>
+            <td class="text-secondary font-weight-bold"><%= @member.boolean_label(@member.is_deleted) %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <td></td>
+          <td class="col-2"><%= link_to '編集する', edit_admin_member_path(@member), class: "btn btn-sm btn-success pl-3 pr-3" %></td>
+          <td><%= link_to '注文履歴一覧を見る', admin_path, class: "btn btn-sm btn-primary pl-3 pr-3" %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

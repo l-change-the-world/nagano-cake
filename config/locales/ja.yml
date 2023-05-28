@@ -1,0 +1,28 @@
+ja:
+  enums:
+    order:
+      status:
+        waiting: "入金待ち"
+        paid_check: "入金確認"
+        production: "制作中"
+        preparing: "発送準備中"
+        shipped: "発送済み"
+        
+      payment_method:
+       credit_card: "クレジットカード"
+       transfer: "銀行振込"
+
+    order_item:
+      production_status:
+        cannot_start: "着手不可"
+        waiting: "製作待ち"
+        production: "製作中"
+        complete: "製作完了"
+        
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
