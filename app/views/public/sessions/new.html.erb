@@ -1,35 +1,52 @@
-<div class="mt-5 ml-5">
-  <span class="bg-light h3">ログイン</span>
-</div>
-<div class="mt-2 ml-5">
-  <span class="bg-light h5">会員の方はこちらからログイン</span>
+<div class="container">
+  <div class="row">
+    <div class="mt-5 ml-5">
+      <span class="bg-light h3">ログイン</span>
+    </div>
+  </div>
 </div>
 
-<%= form_with model: @member, url: member_session_path do |f| %>
-  <table class="mt-5 ml-5">
-    <tr>
-      <td><%= f.label :メールアドレス %></td>
-      <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :パスワード %></td>
-      <td><%= f.password_field :password, autocomplete: "current-password" %></td>
-    </tr>
-  <!--<% if devise_mapping.rememberable? %>-->
-    <!--<div class="field">-->
-      <!--<%= f.check_box :remember_me %>-->
-      <!--<%= f.label :remember_me %>-->
-    <!--</div>-->
-  <!--<% end %>-->
-    <tr>
-      <td></td>
-      <td class="pt-4"><%= f.submit "ログイン", class: "btn btn-primary col-10" %></td>
-    </tr>
-  </table>
-<% end %>
-
-<div class="mt-5 ml-5 mb-5">
-  <span class="bg-light h5">会員登録がお済みでない方</span><br>
-  <%= link_to "こちら", new_member_registration_path %>から新規登録を行なってください。
+<div class="container">
+  <div class="row">
+    <div class="mt-2 ml-5">
+      <span class="bg-light h5">会員の方はこちらからログイン</span>
+    </div>
+  </div>
 </div>
-<!--<%= render "public/shared/links" %>-->
+
+<div class="container">
+  <div class="row">
+    <%= form_with model: @member, url: member_session_path do |f| %>
+      <table class="mt-5 ml-5">
+        <tr>
+          <td><%= f.label :メールアドレス %></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :パスワード %></td>
+          <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+        </tr>
+      <!--<% if devise_mapping.rememberable? %>-->
+        <!--<div class="field">-->
+          <!--<%= f.check_box :remember_me %>-->
+          <!--<%= f.label :remember_me %>-->
+        <!--</div>-->
+      <!--<% end %>-->
+        <tr>
+          <td></td>
+          <td class="pt-4"><%= f.submit "ログイン", class: "btn btn-primary col-10" %></td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="mt-5 ml-5 mb-5">
+      <span class="bg-light h5">会員登録がお済みでない方</span><br>
+      <%= link_to "こちら", new_member_registration_path %>から新規登録を行なってください。
+    </div>
+  </div>
+</div>
+    <!--<%= render "public/shared/links" %>-->
