@@ -6,8 +6,8 @@ before_action :authenticate_member!
   end
 
   def index
-    @shipping_addresses = ShippingAddress.find(params[:id])
     @shipping_address = ShippingAddress.new
+    @shipping_addresses = ShippingAddress.where(member_id:current_member.id)
   end
 
   def edit
