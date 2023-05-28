@@ -1,8 +1,8 @@
-<div class="mt-5">
+<div class="mt-4">
   <div class="container">
     <div class="row">
       <div class="col">
-        <table class="table">
+        <table class="table table-borderd">
           <tr class="table-borderless">
             <th>
               <span class="bg-light h3 col-12">注文履歴一覧</span>
@@ -16,19 +16,20 @@
           </tr>
           <% @orders.each do |order| %>
             <tr>
-              <td>
+              <td class="border-bottom">
                 <%= link_to admin_order_path(order), class:"text-dark" do %>
                   <%= order.created_at.strftime('%Y/%m/%d/%T') %>
                 <% end %>
               </td>
-              <td><%= order.name %></td>
-              <td>
+              <td class="border-bottom"><%= order.name %></td>
+              <td class="border-bottom">
+                <% @total = 0 %>
                 <% order.order_items.each do |order_item| %>
                   <% @total += order_item.quantity %>
                 <% end %>
                 <%= @total %>
               </td>
-              <td><%= Order.statuses_i18n[order.status] %></td>
+              <td class="border-bottom"><%= Order.statuses_i18n[order.status] %></td>
             </tr>
           <% end %>
         </table>
@@ -38,8 +39,8 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-4"></div>
-    <div class="col-1"><%= paginate @orders %></div>
+    <div class="col-3"></div>
+    <div class="col-4"><%= paginate @orders %></div>
     <div class="col"></div>
   </div>
 </div>

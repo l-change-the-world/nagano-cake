@@ -1,7 +1,7 @@
-<div class="mt-5">
-  <div class="container ml-0">
+<div class="mt-4">
+  <div class="container">
     <div class="row">
-      <div class="col-2"></div>
+      <div class="col-1"></div>
       <div class="col">
         <span class="bg-light h3 pl-3 pr-3">注文履歴詳細</span>
       </div>
@@ -9,9 +9,8 @@
   </div>
 </div>
 
-<div class="container ml-0">
+<div class="container">
   <div class="row">
-    <div class="col-1"></div>
     <div class="col">
       <table class="table table-borderless">
         <tr>
@@ -43,47 +42,42 @@
         </tr>
         <tr>
           <th class="align-middle">注文ステータス</th>
-          <%= form_with model: @order, url: admin_order_path(@order),local: true, class: "form-row" do |f| %>
-          <td class="align-middle">
-            <%= f.select :status, Order.statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm text-center" %>
+          <td colspan="2" class="align-middle">
+            <%= form_with model: @order, url: admin_order_path(@order),local: true, class: "form-row" do |f| %>
+              <%= f.select :status, Order.statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm", style:"width: 110px;"  %>
+              <%= f.submit "更新", class:"ml-4 btn btn-success" %>
+            <% end %>
           </td>
-          <td class="align-middle">
-            <%= f.submit "更新", class:"btn btn-success" %>
-          </td>
-          <% end %>
         </tr>
       </table>
     </div>
   </div>
 </div>
 
-<div class="container ml-0">
+<div class="container">
   <div class="row">
-    <div class="col-1"></div>
     <div class="col-7">
-      <table class="table">
+      <table class="table table-bordered">
         <tr class="bg-light">
-          <th>商品名</th>
-          <th>単価(税込)</th>
-          <th>数量</th>
-          <th>小計</th>
-          <th>制作ステータス</th>
-          <th></th>
+          <th class="border-0">商品名</th>
+          <th class="border-0">単価(税込)</th>
+          <th class="border-0">数量</th>
+          <th class="border-0">小計</th>
+          <th class="border-0">制作ステータス</th>
+          <th class="border-0"></th>
         </tr>
         <% @order_items.each do |order_item| %>
-          <tr>
-            <td class="align-middle"><%= order_item.item.name %></td>
-            <td class="align-middle"><%= order_item.price %></td>
-            <td class="align-middle"><%= order_item.quantity %></td>
-            <td class="align-middle"><%= order_item.subtotal %></td>
+          <tr class="border-0">
+            <td class="align-middle border-0"><%= order_item.item.name %></td>
+            <td class="align-middle border-0"><%= order_item.price %>円</td>
+            <td class="align-middle border-0"><%= order_item.quantity %>個</td>
+            <td class="align-middle border-0"><%= order_item.subtotal %>円</td>
+            <td class="align-middle border-0" colspan="2">
             <%= form_with model: order_item, url: admin_order_item_path(order_item),local: true, class: "form-row" do |f| %>
-            <td class="align-middle">
-              <%= f.select :production_status, OrderItem.production_statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm text-center" %>
-            </td>
-            <td class="align-middle">
-              <%= f.submit "更新", class:"btn btn-success" %>
-            </td>
+              <%= f.select :production_status, OrderItem.production_statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm", style:"width: 100px;" %>
+              <%= f.submit "更新", class:"ml-4 btn btn-success" %>
             <% end %>
+            </td>
           </tr>
 
         <% end %>

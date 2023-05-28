@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
     # マイページ
   end
 
+  def search
+
+  end
+
   protected
 
   def configure_permitted_parameters
