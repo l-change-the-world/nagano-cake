@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   # 管理者側ルーティング
   namespace :admin do
    resources :items, only: [:new, :index, :create, :show, :edit, :update]
-   resources :genres, only: [:new, :create, :index, :edit, :update]
+   resources :genres, only: [:new, :create, :index, :edit, :update, :destroy]
 
   get '/' => 'homes#top'
    resources :members, only: [:index, :show, :edit, :update]

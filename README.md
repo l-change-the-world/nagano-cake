@@ -1,24 +1,36 @@
-# README
+# DMMWEBCAMP 2023年4月生・チーム開発課題：ECサイト「ながのCAKE」作成
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#チーム名：L-CHANGE-THE-WORLD
 
-Things you may want to cover:
+DMMWEBCAMPの2023年4月生のチーム開発課題として、ECサイト「ながのCAKE」を作りました！
 
-* Ruby version
+##実装機能紹介
 
-* System dependencies
+###全体
+enumを使用したプルダウン機能
+deviseを使用したサインアップ、ログイン・ログアウト機能
+kaminariを使用したページネーション機能
+bootstrap、FontAwesomeを使用したレイアウト調整
 
-* Configuration
+###会員側
+注文機能、カート機能
+注文機能に付随した配送先登録機能
+ステータス変更による退会機能(倫理削除)
 
-* Database creation
+###管理者側
+商品登録機能
+ジャンル機能
+注文情報のステータス変更機能
+会員のステータス変更(倫理削除)
 
-* Database initialization
+###使用言語
+・Ruby on rails(6.1.7.3, 6.1.7.2, 6.1.7, 6.1.6.1, 6.1.4)
+・HTML
+・CSS
+・Javascript
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+###チームメンバー
+・yudai-iwai
+・OTUKI-Takefumi
+・Yukari-Hangai
+・alronbleech
